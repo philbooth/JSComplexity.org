@@ -32,12 +32,12 @@ app.get('/', function (request, response) {
 });
 
 app.post('/', function (request, response) {
-    var report = getReportResponse(request);
+    var report = getReport(request);
     response.render('report', report.body);
 });
 
 app.post('/report.json', function (request, response) {
-    var report = getReportResponse(request);
+    var report = getReport(request);
     response.jsonp(report.status, report.body);
 });
 
@@ -53,7 +53,7 @@ http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
 
-function getReportResponse (request) {
+function getReport (request) {
     try {
         return {
             status: 200,
