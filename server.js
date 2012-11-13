@@ -12,7 +12,8 @@ app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
     app.enable('view cache');
-    app.engine(hogan);
+    app.locals({ layout: 'layout' });
+    app.engine('html', hogan);
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
@@ -27,10 +28,10 @@ app.configure('development', function () {
 });
 
 app.get('/', function (request, response) {
-    reponse.render('report');
+    response.render('report');
 });
 
-app.post('/' function (request, response) {
+app.post('/', function (request, response) {
     var report = getReportResponse(request);
     response.render('report', report.body);
 });
@@ -61,7 +62,7 @@ function getReportResponse (request) {
                 trycatch: request.body.trycatch || false,
                 logicalor: !request.body.logicalor,
                 switchcase: !request.body.switchcase
-            }
+            })
         };
     } catch (error) {
         return {
