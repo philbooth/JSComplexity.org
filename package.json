@@ -8,7 +8,8 @@
         "hogan-express": "0.3.x",
         "stylus": "0.30.x",
         "one": "1.7.x",
-        "complexity-report": "0.4.x"
+        "complexity-report": "0.4.x",
+        "check-types": "0.3.x"
     },
     "scripts": {
         "start": "node app"

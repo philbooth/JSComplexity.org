@@ -7,6 +7,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     cr = require('complexity-report'),
+    check = require('check-types'),
     app = express(),
     partials = {
         source: 'partials/body/main/source',
@@ -53,11 +54,12 @@ app.get('/', function (request, response) {
 
 app.post('/', function (request, response) {
     var report = getReport(request);
+    console.dir(report);
     response.render('partials/body/main', {
         partials: partials,
         source: request.body.source,
         options: getOptionsModel(request.body.options),
-        metrics: getAggregateModel(request.body.aggregate),
+        metrics: getAggregateModel(report.body),
         functions: getFunctionsModel(report.body.functions)
     });
 });
@@ -84,32 +86,56 @@ function getOptionsModel (options) {
         {
             name: 'logicalor',
             description: 'Treat operator || as a source of cyclomatic complexity',
-            set: options.logicalor
+            set: isOptionSet(options, 'logicalor')
         },
         {
             name: 'switchcase',
             description: 'Treat switch statements as a source of cylomatic complexity',
-            set: options.switchcase
+            set: isOptionSet(options, 'switchcase')
         },
         {
             name: 'forin',
             description: 'Treat for...in loops as a source of cylomatic complexity',
-            set: options.forin
+            set: isOptionSet(options, 'forin')
         },
         {
             name: 'trycatch',
             description: 'Treat catch clauses as a source of cylomatic complexity',
-            set: options.trycatch
+            set: isOptionSet(options, 'trycatch')
         }
     ];
 }
 
+function isOptionSet(options, option) {
+    if (options === option) {
+        return true;
+    }
+
+    if (check.isArray(options) && options.indexOf(option) !== -1) {
+        return true;
+    }
+
+    return false;
+}
+
 function getAggregateModel (data) {
     return [
-        { label: 'Maintainability index', value: data.maintainability },
-        { label: 'Physical SLOC', value: data.complexity.sloc.physical },
-        { label: 'Logical SLOC', value: data.complexity.sloc.logical },
-        { label: 'Aggregate cyclomatic complexity', value: data.complexity.cyclomatic }
+        {
+            label: 'Maintainability index',
+            value: data.maintainability
+        },
+        {
+            label: 'Physical SLOC',
+            value: data.aggregate.complexity.sloc.physical
+        },
+        {
+            label: 'Logical SLOC',
+            value: data.aggregate.complexity.sloc.logical
+        },
+        {
+            label: 'Aggregate cyclomatic complexity',
+            value: data.aggregate.complexity.cyclomatic
+        }
     ];
 }
 
@@ -121,13 +147,34 @@ function getFunctionModel (data) {
     return {
         name: data.name,
         metrics: [
-            { label: 'Line No.', value: data.line },
-            { label: 'Physical SLOC', value: data.complexity.sloc.physical },
-            { label: 'Logical SLOC', value: data.complexity.sloc.logical },
-            { label: 'Cyclomatic complexity', value: data.complexity.cyclomatic },
-            { label: 'Halstead difficulty', value: data.complexity.halstead.difficulty },
-            { label: 'Halstead volume', value: data.complexity.halstead.volume },
-            { label: 'Halstead effort', value: data.complexity.halstead.effort }
+            {
+                label: 'Line No.',
+                value: data.line
+            },
+            {
+                label: 'Physical SLOC',
+                value: data.complexity.sloc.physical
+            },
+            {
+                label: 'Logical SLOC',
+                value: data.complexity.sloc.logical
+            },
+            {
+                label: 'Cyclomatic complexity',
+                value: data.complexity.cyclomatic
+            },
+            {
+                label: 'Halstead difficulty',
+                value: data.complexity.halstead.difficulty
+            },
+            {
+                label: 'Halstead volume',
+                value: data.complexity.halstead.volume
+            },
+            {
+                label: 'Halstead effort',
+                value: data.complexity.halstead.effort
+            }
         ]
     };
 }
