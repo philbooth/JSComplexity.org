@@ -11,7 +11,7 @@ app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
-    app.set('layout', 'page');
+    app.set('layout', 'layout');
     app.set('partials', {
         header: 'partials/header',
         footer: 'partials/footer'
