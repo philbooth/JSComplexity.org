@@ -3,8 +3,9 @@
      name="source"
      placeholder="Paste source code here"
      required="true"
+     class="source"
     >{{source}}</textarea>
-    <fieldset name="options">
+    <fieldset name="options" class="options">
         <legend>Options</legend>
         {{#options}}
         <input
@@ -15,6 +16,7 @@
          {{#set}}
          checked="true"
          {{/set}}
+         class="option"
         />
         <label for="options-{{name}}">
             {{description}}
