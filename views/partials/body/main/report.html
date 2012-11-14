@@ -1,2 +1,10 @@
-{{#functions}}
-{{/functions}}
+<h2>Report</h2>
+{{>metrics}}
+<ol class="functions">
+    {{#functions}}
+    <li class="function">
+        <h3 class="name">{{name}}}</h3>
+        {{>metrics}}
+    </li>
+    {{/functions}}
+</ol>

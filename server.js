@@ -7,7 +7,11 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     cr = require('complexity-report'),
-    app = express();
+    app = express(),
+    partials = {
+        source: 'partials/body/main/source',
+        report: 'partials/body/main/report'
+    };
 
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
@@ -37,10 +41,7 @@ app.configure('development', function () {
 
 app.get('/', function (request, response) {
     response.render('partials/body/main', {
-        partials: {
-            source: 'partials/body/main/source',
-            report: 'partials/body/main/report'
-        },
+        partials: partials,
         options: getOptionsModel({
             logicalor: true,
             switchcase: true,
@@ -53,8 +54,11 @@ app.get('/', function (request, response) {
 app.post('/', function (request, response) {
     var report = getReport(request);
     response.render('partials/body/main', {
+        partials: partials,
         source: request.body.source,
-        options: getOptionsModel(request.body.options)
+        options: getOptionsModel(request.body.options),
+        metrics: getAggregateModel(request.body.aggregate),
+        functions: getFunctionsModel(report.body.functions)
     });
 });
 
@@ -98,6 +102,34 @@ function getOptionsModel (options) {
             set: options.trycatch
         }
     ];
+}
+
+function getAggregateModel (data) {
+    return [
+        { label: 'Maintainability index', value: data.maintainability },
+        { label: 'Physical SLOC', value: data.complexity.sloc.physical },
+        { label: 'Logical SLOC', value: data.complexity.sloc.logical },
+        { label: 'Aggregate cyclomatic complexity', value: data.complexity.cyclomatic }
+    ];
+}
+
+function getFunctionsModel (data) {
+    return data.map(getFunctionModel);
+}
+
+function getFunctionModel (data) {
+    return {
+        name: data.name,
+        metrics: [
+            { label: 'Line No.', value: data.line },
+            { label: 'Physical SLOC', value: data.complexity.sloc.physical },
+            { label: 'Logical SLOC', value: data.complexity.sloc.logical },
+            { label: 'Cyclomatic complexity', value: data.complexity.cyclomatic },
+            { label: 'Halstead difficulty', value: data.complexity.halstead.difficulty },
+            { label: 'Halstead volume', value: data.complexity.halstead.volume },
+            { label: 'Halstead effort', value: data.complexity.halstead.effort }
+        ]
+    };
 }
 
 function getReport (request) {
