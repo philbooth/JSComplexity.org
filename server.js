@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO: Split everything out to separate modules.
+
 var express = require('express'),
     hogan = require('hogan-express'),
     http = require('http'),
@@ -34,12 +36,26 @@ app.configure('development', function () {
 });
 
 app.get('/', function (request, response) {
-    response.render('partials/body/main');
+    response.render('partials/body/main', {
+        partials: {
+            source: 'partials/body/main/source',
+            report: 'partials/body/main/report'
+        },
+        options: getOptionsModel({
+            logicalor: true,
+            switchcase: true,
+            forin: false,
+            trycatch: false
+        })
+    });
 });
 
 app.post('/', function (request, response) {
     var report = getReport(request);
-    response.render('partials/body/main', report.body);
+    response.render('partials/body/main', {
+        source: request.body.source,
+        options: getOptionsModel(request.body.options)
+    });
 });
 
 app.post('/report.json', function (request, response) {
@@ -58,6 +74,31 @@ app.get('/about', function (request, response) {
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
+
+function getOptionsModel (options) {
+    return [
+        {
+            name: 'logicalor',
+            description: 'Treat operator || as a source of cyclomatic complexity',
+            set: options.logicalor
+        },
+        {
+            name: 'switchcase',
+            description: 'Treat switch statements as a source of cylomatic complexity',
+            set: options.switchcase
+        },
+        {
+            name: 'forin',
+            description: 'Treat for...in loops as a source of cylomatic complexity',
+            set: options.forin
+        },
+        {
+            name: 'trycatch',
+            description: 'Treat catch clauses as a source of cylomatic complexity',
+            set: options.trycatch
+        }
+    ];
+}
 
 function getReport (request) {
     try {

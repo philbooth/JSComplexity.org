@@ -1,0 +1,24 @@
+<form method="post">
+    <textarea
+     name="source"
+     placeholder="Paste source code here"
+     required="true"
+    >{{source}}</textarea>
+    <fieldset name="options">
+        <legend>Options</legend>
+        {{#options}}
+        <input
+         id="options-{{name}}"
+         name="options"
+         value="{{name}}"
+         type="checkbox"
+         {{#set}}
+         checked="true"
+         {{/set}}
+        />
+        <label for="options-{{name}}">
+            {{description}}
+        </label>
+        {{/options}}
+    </fieldset>
+</form>
