@@ -43,18 +43,12 @@ app.configure('development', function () {
 app.get('/', function (request, response) {
     response.render('partials/body/main', {
         partials: partials,
-        options: getOptionsModel({
-            logicalor: true,
-            switchcase: true,
-            forin: false,
-            trycatch: false
-        })
+        options: getOptionsModel([ 'logicalor', 'switchcase' ])
     });
 });
 
 app.post('/', function (request, response) {
     var report = getReport(request);
-    console.dir(report);
     response.render('partials/body/main', {
         partials: partials,
         source: request.body.source,
