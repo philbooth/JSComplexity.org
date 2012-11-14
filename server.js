@@ -11,11 +11,13 @@ app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
+    app.set('layout', 'page');
+    app.set('partials', { header: 'header', footer: 'footer' });
     app.enable('view cache');
-    app.locals({ layout: 'layout' });
     app.engine('html', hogan);
     app.use(express.favicon());
     app.use(express.logger('dev'));
+    app.use(express.compress());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
@@ -28,12 +30,12 @@ app.configure('development', function () {
 });
 
 app.get('/', function (request, response) {
-    response.render('report');
+    response.render('main');
 });
 
 app.post('/', function (request, response) {
     var report = getReport(request);
-    response.render('report', report.body);
+    response.render('main', report.body);
 });
 
 app.post('/report.json', function (request, response) {

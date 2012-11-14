@@ -7,16 +7,14 @@
     </head>
     <body>
         <div class="header">
-            <h1>
-                <a href="/">JavaScript complexity report</a>
-            </h1>
+            {{> header}}
         </div>
         <div class="body">
             <h2>{{title}}</h2>
-            {{{content}}}
+            {{{yield}}}
         </div>
         <div class="footer">
-            Copyright &copy; 2012 Phil Booth.
+            {{> footer}}
         </div>
     </body>
 </html>
