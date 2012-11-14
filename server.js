@@ -12,7 +12,10 @@ app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
     app.set('layout', 'page');
-    app.set('partials', { header: 'header', footer: 'footer' });
+    app.set('partials', {
+        header: 'partials/header',
+        footer: 'partials/footer'
+    });
     app.enable('view cache');
     app.engine('html', hogan);
     app.use(express.favicon());
@@ -30,12 +33,12 @@ app.configure('development', function () {
 });
 
 app.get('/', function (request, response) {
-    response.render('main');
+    response.render('partials/body/main');
 });
 
 app.post('/', function (request, response) {
     var report = getReport(request);
-    response.render('main', report.body);
+    response.render('partials/body/main', report.body);
 });
 
 app.post('/report.json', function (request, response) {
@@ -44,11 +47,11 @@ app.post('/report.json', function (request, response) {
 });
 
 app.get('/complexity', function (request, response) {
-    response.render('complexity');
+    response.render('partials/body/complexity');
 });
 
 app.get('/about', function (request, response) {
-    response.render('about');
+    response.render('partials/body/about');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
