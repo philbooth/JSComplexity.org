@@ -26,6 +26,7 @@ app.configure(function () {
     app.use(app.router);
     app.use(require('stylus').middleware(__dirname + '/public'));
     app.use(express.static(path.join(__dirname, 'public')));
+    // TODO: Error handling / pretty 404, 500 pages
 });
 
 app.configure('development', function () {
@@ -71,7 +72,7 @@ function getReport (request) {
         };
     } catch (error) {
         return {
-            status: 500,
+            status: 400,
             body: {
                 error: error.message
             }
