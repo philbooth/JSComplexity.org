@@ -1,0 +1,14 @@
+clearfix()
+  zoom 1
+  &:before, &:after
+    content '.'
+    display block
+    height: 0
+    overflow hidden
+  &:after
+    clear both
+
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
