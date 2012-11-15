@@ -1,8 +1,15 @@
 <div class="panel source">
-    <h2>Source code</h2>
     {{>source}}
 </div>
-<div class="panel report">
-    <h2>Report</h2>
-    {{>report}}
-</div>
+
+{{#error}}
+    <div class="panel error">
+        {{>error}}
+    </div>
+{{/error}}
+
+{{^error}}
+    <div class="panel report">
+        {{>report}}
+    </div>
+{{/error}}

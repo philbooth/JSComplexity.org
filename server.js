@@ -10,19 +10,25 @@ var express = require('express'),
     check = require('check-types'),
     app = express(),
     partials = {
+        header: 'partials/header',
+        footer: 'partials/footer',
+        main: 'partials/body/main',
         source: 'partials/body/main/source',
-        report: 'partials/body/main/report'
-    };
+        error: 'partials/body/main/error',
+        report: 'partials/body/main/report',
+        metrics: 'partials/body/main/report/metrics',
+        functions: 'partials/body/main/report/functions',
+        complexity: 'partials/body/complexity',
+        about: 'partials/body/about'
+    },
+    title = 'JavaScript Complexity Report';
 
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'html');
     app.set('layout', 'layout');
-    app.set('partials', {
-        header: 'partials/header',
-        footer: 'partials/footer'
-    });
+    app.set('partials', partials);
     app.enable('view cache');
     app.engine('html', hogan);
     app.use(express.favicon());
@@ -41,34 +47,49 @@ app.configure('development', function () {
 });
 
 app.get('/', function (request, response) {
-    response.render('partials/body/main', {
-        partials: partials,
+    response.render(partials.main, {
+        title: title,
         options: getOptionsModel([ 'logicalor', 'switchcase' ])
     });
 });
 
 app.post('/', function (request, response) {
-    var report = getReport(request);
-    response.render('partials/body/main', {
-        partials: partials,
-        source: request.body.source,
-        options: getOptionsModel(request.body.options),
-        metrics: getAggregateModel(report.body),
-        functions: getFunctionsModel(report.body.functions)
-    });
+    var report, models = {};
+    
+    try {
+        models.title = title;
+        models.source = request.body.source;
+        models.options = getOptionsModel(request.body.options);
+
+        report = cr.run(request.body.source, {
+            forin: request.body.forin || false,
+            trycatch: request.body.trycatch || false,
+            logicalor: !request.body.logicalor,
+            switchcase: !request.body.switchcase
+        });
+
+        models.metrics = getAggregateModel(report);
+        models.functions = getFunctionsModel(report.functions);
+    } catch (error) {
+        // TODO: Select/highlight error code in view?
+        models.error = error;
+    }
+    
+    response.render(partials.main, models);
 });
 
-app.post('/report.json', function (request, response) {
-    var report = getReport(request);
-    response.jsonp(report.status, report.body);
-});
+// TODO
+//app.post('/report.json', function (request, response) {
+//    var report = getReport(request);
+//    response.jsonp(report.status, report.body);
+//});
 
 app.get('/complexity', function (request, response) {
-    response.render('partials/body/complexity');
+    response.render(partials.complexity, { title: 'Complexity | ' + title });
 });
 
 app.get('/about', function (request, response) {
-    response.render('partials/body/about');
+    response.render(partials.about, { title: 'Aboout | ' + title });
 });
 
 http.createServer(app).listen(app.get('port'), function(){
@@ -171,25 +192,4 @@ function getFunctionModel (data) {
             }
         ]
     };
-}
-
-function getReport (request) {
-    try {
-        return {
-            status: 200,
-            body: cr.run(request.body.source, {
-                forin: request.body.forin || false,
-                trycatch: request.body.trycatch || false,
-                logicalor: !request.body.logicalor,
-                switchcase: !request.body.switchcase
-            })
-        };
-    } catch (error) {
-        return {
-            status: 400,
-            body: {
-                error: error.message
-            }
-        };
-    }
 }
