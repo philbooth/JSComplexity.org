@@ -2,14 +2,16 @@
     {{>source}}
 </div>
 
-{{#error}}
-    <div class="panel error">
-        {{>error}}
-    </div>
-{{/error}}
+{{^nosource}}
+    {{#error}}
+        <div class="panel error">
+            {{>error}}
+        </div>
+    {{/error}}
 
-{{^error}}
-    <div class="panel report">
-        {{>report}}
-    </div>
-{{/error}}
+    {{^error}}
+        <div class="panel report">
+            {{>report}}
+        </div>
+    {{/error}}
+{{/nosource}}

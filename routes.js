@@ -20,7 +20,8 @@ module.exports = [
 function getMain (request, response) {
     response.render(partials.main, {
         title: settings.title,
-        options: models.options.get([ 'logicalor', 'switchcase' ])
+        options: models.options.get([ 'logicalor', 'switchcase' ]),
+        nosource: true
     });
 }
 
