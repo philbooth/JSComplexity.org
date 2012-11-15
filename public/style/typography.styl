@@ -1,3 +1,13 @@
+@font-face
+  font-family 'Ostrich Sans'
+  src url('/fonts/ostrich-sans/regular.eot')
+  src local('?'), url('/fonts/ostrich-sans/regular.woff') format('woff'), url('/fonts/ostrich-sans/regular.ttf') format('truetype'), url('/fonts/ostrich-sans/regular.svg') format('svg')
+
+@font-face
+  font-family 'Ostrich Sans Bold'
+  src url('/fonts/ostrich-sans/bold.eot')
+  src local('?'), url('/fonts/ostrich-sans/bold.woff') format('woff'), url('/fonts/ostrich-sans/bold.ttf') format('truetype'), url('/fonts/ostrich-sans/bold.svg') format('svg')
+
 monofont()
   font-family Consolas, Monaco, Menlo, 'Lucida Console', monospace
   
@@ -12,9 +22,14 @@ h1, h2, h3, h4
   font-weight normal
 
 h1
-  font-size 3em
+  font-family 'Ostrich Sans'
+  font-size 9em
+  letter-spacing 0.1em
   line-height 1
-  margin-bottom 0.5em
+  margin 20px 40px 0
+  & .emphasis
+    font-family 'Ostrich Sans Bold'
+    font-size 0.9em
 
 h2
   font-size 2em
