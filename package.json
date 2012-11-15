@@ -11,6 +11,6 @@
         "check-types": "0.3.x"
     },
     "scripts": {
-        "start": "node server.js"
+        "start": "node app"
     }
 }
