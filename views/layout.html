@@ -2,18 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8" />
+
         <title>{{title}}</title>
+
         <link rel="stylesheet" type="text/css" href="/style/site.css" />
     </head>
+
     <body>
-        <div class="header">
-            {{>header}}
-        </div>
+        {{>header}}
+
+        {{>menu}}
+
         <div class="body">
             {{{yield}}}
         </div>
-        <div class="footer">
-            {{>footer}}
-        </div>
+
+        {{>footer}}
     </body>
 </html>

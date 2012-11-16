@@ -4,22 +4,23 @@ var cr = require('complexity-report'),
     settings = require('./settings'),
     partials = require('./views/partials'),
     models = {
+        menu: require('./models/menu'),
         options: require('./models/options'),
         metrics: require('./models/metrics'),
         functions: require('./models/functions')
     };
 
 module.exports = [
-    { path: '/', method: 'get', handler: getMain },
-    { path: '/', method: 'post', handler: postMain },
-//  { path: '/report.json', method: 'post', handler: postWs },
-    { path: '/complexity', method: 'get', handler: getComplexity },
-    { path: '/about', method: 'get', handler: getAbout }
+    { path: settings.paths.home, method: 'get', handler: getMain },
+    { path: settings.paths.home, method: 'post', handler: postMain },
+    { path: settings.paths.complexity, method: 'get', handler: getComplexity },
+    { path: settings.paths.about, method: 'get', handler: getAbout }
 ];
 
 function getMain (request, response) {
     response.render(partials.main, {
         title: settings.title,
+        menu: models.menu.get('home'),
         options: models.options.get([ 'logicalor', 'switchcase' ]),
         nosource: true
     });
@@ -31,6 +32,7 @@ function postMain (request, response) {
     try {
         data.title = settings.title;
         data.source = request.body.source;
+        data.menu = models.menu.get('home');
         data.options = models.options.get(request.body.options);
 
         report = cr.run(request.body.source, {
@@ -56,9 +58,15 @@ function postWs (request, response) {
 }
 
 function getComplexity (request, response) {
-    response.render(partials.complexity, { title: 'Complexity | ' + settings.title });
+    response.render(partials.complexity, {
+        title: 'Complexity | ' + settings.title,
+        menu: models.menu.get('complexity')
+    });
 }
 
 function getAbout (request, response) {
-    response.render(partials.about, { title: 'Aboout | ' + settings.title });
+    response.render(partials.about, {
+        title: 'Aboout | ' + settings.title,
+        menu: models.menu.get('about')
+    });
 }

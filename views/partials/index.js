@@ -3,6 +3,7 @@
 module.exports = {
     header: 'partials/header',
     footer: 'partials/footer',
+    menu: 'partials/menu',
     main: 'partials/body/main',
     source: 'partials/body/main/source',
     error: 'partials/body/main/error',
