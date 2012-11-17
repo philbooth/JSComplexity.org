@@ -37,7 +37,7 @@ function getOtherMenuItem (menuitem) {
     return [
         '<a href="',
         settings.paths[menuitem],
-        '" class="menuitem">',
+        '" class="menuitem active">',
         getLabel(menuitem),
         '</a>'
     ].join('');

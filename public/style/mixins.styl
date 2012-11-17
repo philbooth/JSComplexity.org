@@ -15,6 +15,12 @@ invisible()
   color transparent
   overflow hidden
 
+vertical-gradient(from, to)
+  background-image -webkit-gradient(linear, left top, left bottom, color-stop(0, from), color-stop(1, to))
+  background-image -webkit-linear-gradient(top, from 0%, to 100%)
+  background-image -moz-linear-gradient(top, from 0%, to 100%)
+  background-image linear-gradient(top, from 0%, to 100%)
+
 border-radius()
   -webkit-border-radius arguments
   -moz-border-radius arguments

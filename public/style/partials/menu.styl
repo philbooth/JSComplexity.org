@@ -1,0 +1,18 @@
+.menu
+  padding 0 40px
+  clearfix()
+  .menuitem
+    display block
+    float left
+    padding 10px
+    margin-right 10px
+    border-radius(0 0 8px 8px)
+    font-size 1.2em
+    background-color blue
+    vertical-gradient(blue, blue-bright)
+    color white
+    &.current
+      background-color green
+      vertical-gradient(green, green-bright)
+    &.active:hover
+      padding @padding + 1
