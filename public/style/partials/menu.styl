@@ -2,7 +2,7 @@
   padding 0 40px
   clearfix()
   .menuitem
-    hover-padding = 1px
+    hover-padding = 2px
     display block
     float left
     padding 12px
@@ -11,12 +11,12 @@
     font-size 1.2em
     background-color blue
     vertical-gradient(blue, blue-bright)
-    color white
+    color rgba(220, 220, 220, 0.8)
     text-shadow rgba(0, 0, 0, 0.3) -1px -1px
     box-shadow(1px 1px rgba(0, 0, 0, 0.3))
     &.current
       background-color green
       vertical-gradient(green, green-bright)
     &.active:hover
-      margin 0 (10px - hover-padding * 2) 0 0
-      padding @padding + hover-padding
+      margin 0 10px 0 0
+      padding (@padding + hover-padding) @padding
