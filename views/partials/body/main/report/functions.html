@@ -1,11 +1,11 @@
-<h4>Functions</h4>
-
-<ol class="functions">
+<ol>
     {{#functions}}
-    <li class="function">
-        <h5 class="name">{{name}}</h5>
-        
-        {{>metrics}}
+    <li>
+        <h4 class="name"><code>{{name}}</code></h4>
+
+        <ul>
+            {{>metrics}}
+        </ul>
     </li>
     {{/functions}}
 </ol>
