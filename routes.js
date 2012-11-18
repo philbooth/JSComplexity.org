@@ -11,10 +11,10 @@ var cr = require('complexity-report'),
     };
 
 module.exports = [
-    { path: settings.paths.home, method: 'get', handler: getMain },
-    { path: settings.paths.home, method: 'post', handler: postMain },
-    { path: settings.paths.complexity, method: 'get', handler: getComplexity },
-    { path: settings.paths.about, method: 'get', handler: getAbout }
+    { path: settings.home.path, method: 'get', handler: getMain },
+    { path: settings.home.path, method: 'post', handler: postMain },
+    { path: settings.complexity.path, method: 'get', handler: getComplexity },
+    { path: settings.about.path, method: 'get', handler: getAbout }
 ];
 
 function getMain (request, response) {

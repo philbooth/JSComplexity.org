@@ -2,9 +2,16 @@
 
 module.exports = {
     title: 'JavaScript Complexity Report',
-    paths: {
-        home: '/',
-        complexity: '/complexity',
-        about: '/about'
+    home: {
+        path: '/',
+        label: 'Analysis'
+    },
+    complexity: {
+        path: '/complexity',
+        label: 'About complexity'
+    },
+    about: {
+        path: '/about',
+        label: 'About this site'
     }
 };

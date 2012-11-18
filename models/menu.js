@@ -1,11 +1,6 @@
 'use strict';
 
-var settings = require('../settings'),
-    labels = {
-        home: 'Home',
-        complexity: 'About complexity',
-        about: 'About this site'
-    };
+var settings = require('../settings');
 
 exports.get = getMenuModel;
 
@@ -30,13 +25,13 @@ function getCurrentMenuItem (menuitem) {
 }
 
 function getLabel (menuitem) {
-    return labels[menuitem];
+    return settings[menuitem].label;
 }
 
 function getOtherMenuItem (menuitem) {
     return [
         '<a href="',
-        settings.paths[menuitem],
+        settings[menuitem].path,
         '" class="menuitem active">',
         getLabel(menuitem),
         '</a>'

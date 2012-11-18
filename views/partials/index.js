@@ -2,8 +2,9 @@
 
 module.exports = {
     header: 'partials/header',
-    footer: 'partials/footer',
     menu: 'partials/menu',
+    footer: 'partials/footer',
+    script: 'partials/script',
     main: 'partials/body/main',
     source: 'partials/body/main/source',
     error: 'partials/body/main/error',
