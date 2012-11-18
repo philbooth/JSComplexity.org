@@ -4,6 +4,7 @@ var cr = require('complexity-report'),
     settings = require('./settings'),
     partials = require('./views/partials'),
     models = {
+        title: require('./models/title'),
         menu: require('./models/menu'),
         options: require('./models/options'),
         metrics: require('./models/metrics'),
@@ -18,21 +19,26 @@ module.exports = [
 ];
 
 function getMain (request, response) {
-    response.render(partials.main, {
-        title: settings.title,
-        menu: models.menu.get('home'),
-        options: models.options.get([ 'logicalor', 'switchcase' ]),
-        nosource: true
-    });
+    var data = getViewData('home');
+
+    data.options = models.options.get([ 'logicalor', 'switchcase' ]);
+    data.nosource = true;
+
+    response.render(partials.main, data);
+}
+
+function getViewData (page) {
+    return {
+        title: models.title.get('home'),
+        menu: models.menu.get('home')
+    };
 }
 
 function postMain (request, response) {
-    var report, data = {};
+    var report, data = getViewData('home');
     
     try {
-        data.title = settings.title;
         data.source = request.body.source;
-        data.menu = models.menu.get('home');
         data.options = models.options.get(request.body.options);
 
         report = cr.run(request.body.source, {
@@ -58,15 +64,9 @@ function postWs (request, response) {
 }
 
 function getComplexity (request, response) {
-    response.render(partials.complexity, {
-        title: 'Complexity | ' + settings.title,
-        menu: models.menu.get('complexity')
-    });
+    response.render(partials.complexity, getViewData('complexity'));
 }
 
 function getAbout (request, response) {
-    response.render(partials.about, {
-        title: 'Aboout | ' + settings.title,
-        menu: models.menu.get('about')
-    });
+    response.render(partials.about, getViewData('about'));
 }

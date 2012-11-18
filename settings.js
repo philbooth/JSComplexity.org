@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    title: 'JavaScript Complexity Report',
+    title: 'JSComplexity.org',
     home: {
         path: '/',
         label: 'Analysis'
