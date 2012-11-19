@@ -12,7 +12,7 @@
         "check-types": "0.3.x"
     },
     "scripts": {
-        "start": "node app"
+        "start": "node ./app.js"
     },
     "engines": {
         "node": ">=0.8"
