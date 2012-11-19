@@ -15,11 +15,11 @@ function getFunctionModel (data) {
                 value: data.line
             },
             {
-                label: 'Physical SLOC',
+                label: 'Physical LOC',
                 value: data.complexity.sloc.physical
             },
             {
-                label: 'Logical SLOC',
+                label: 'Logical LOC',
                 value: data.complexity.sloc.logical
             },
             {

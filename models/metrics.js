@@ -9,11 +9,11 @@ function getMetricsModel (data) {
             value: data.maintainability
         },
         {
-            label: 'Physical SLOC',
+            label: 'Physical LOC',
             value: data.aggregate.complexity.sloc.physical
         },
         {
-            label: 'Logical SLOC',
+            label: 'Logical LOC',
             value: data.aggregate.complexity.sloc.logical
         },
         {

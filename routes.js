@@ -29,8 +29,8 @@ function getMain (request, response) {
 
 function getViewData (page) {
     return {
-        title: models.title.get('home'),
-        menu: models.menu.get('home')
+        title: models.title.get(page),
+        menu: models.menu.get(page)
     };
 }
 
