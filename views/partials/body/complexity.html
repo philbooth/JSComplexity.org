@@ -58,9 +58,7 @@
 
 <ul>
     <li>
-        <p>
-            <strong>Lines of code (LOC)</strong>
-        </p>
+        <h4 class="metric">Lines of code (LOC)</h4>
 
         <p>
             This can be either physical
@@ -77,9 +75,7 @@
     </li>
 
     <li>
-        <p>
-            <strong>Cyclomatic complexity</strong>
-        </p>
+        <h4 class="metric">Cyclomatic complexity</h4>
 
         <p>
             This metric counts
@@ -92,9 +88,7 @@
     </li>
 
     <li>
-        <p>
-            <strong>Halstead complexity measures</strong>
-        </p>
+        <h4 class="metric">Halstead complexity measures</h4>
 
         <p>
             These are a collection of metrics
@@ -110,35 +104,33 @@
 
         <ul>
             <li>
-                <p>
-                    <strong>Difficulty</strong>
-                </p>
+                <h5 class="metric">Difficulty</h5>
 
-                <em>(distinct operators / 2) * (total operands / distinct operands)</em>
+                <div class="equation">
+                    <em>(distinct operators / 2) * (total operands / distinct operands)</em>
+                </div>
             </li>
 
             <li>
-                <p>
-                    <strong>Volume</strong>
-                </p>
+                <h5 class="metric">Volume</h5>
 
-                <em>(total operators + total operands) * log2(distinct operators + distinct operands)</em>
+                <div class="equation">
+                    <em>(total operators + total operands) * log2(distinct operators + distinct operands)</em>
+                </div>
             </li>
 
             <li>
-                <p>
-                    <strong>Effort</strong>
-                </p>
+                <h5 class="metric">Effort</h5>
 
-                <em>difficulty * volume</em>
+                <div class="equation">
+                    <em>difficulty * volume</em>
+                </div>
             </li>
         </ul>
     </li>
 
     <li>
-        <p>
-            <strong>Maintainability index</strong>
-        </p>
+        <h4 class="metric">Maintainability index</h4>
 
         <p>
             This metric is calculated
@@ -148,7 +140,9 @@
             using the following formula:
         </p>
 
-        <em>171 - (3.42 * ln(mean effort)) - (0.23 * ln(mean cyclomatic complexity)) - (16.2 * ln(mean logical LOC))</em>
+        <div class="equation">
+            <em>171 - (3.42 * ln(mean effort)) - (0.23 * ln(mean cyclomatic complexity)) - (16.2 * ln(mean logical LOC))</em>
+        </div>
 
         <p>
             Values are on a scale
