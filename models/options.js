@@ -13,17 +13,17 @@ function getOptionsModel (options) {
         },
         {
             name: 'switchcase',
-            description: 'Treat <code>switch</code> statements as a source of cylomatic complexity',
+            description: 'Treat <code>switch</code> statements as a source of cyclomatic complexity',
             set: isOptionSet(options, 'switchcase')
         },
         {
             name: 'forin',
-            description: 'Treat <code>for...in</code> loops as a source of cylomatic complexity',
+            description: 'Treat <code>for...in</code> loops as a source of cyclomatic complexity',
             set: isOptionSet(options, 'forin')
         },
         {
             name: 'trycatch',
-            description: 'Treat <code>catch</code> clauses as a source of cylomatic complexity',
+            description: 'Treat <code>catch</code> clauses as a source of cyclomatic complexity',
             set: isOptionSet(options, 'trycatch')
         }
     ];
