@@ -1,6 +1,6 @@
 {
     "name": "jscomplexity.org",
-    "version": "0.1.15",
+    "version": "0.1.16",
     "private": true,
     "author": "Phil Booth <pmbooth@gmail.com>",
     "subdomain": "jscomplexity",
