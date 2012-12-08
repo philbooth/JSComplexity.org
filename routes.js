@@ -24,6 +24,8 @@ function getMain (request, response) {
     data.options = models.options.get([ 'logicalor', 'switchcase' ]);
     data.nosource = true;
 
+    setHeaders(request, response);
+
     response.render(partials.main, data);
 }
 
@@ -34,9 +36,17 @@ function getViewData (page) {
     };
 }
 
+function setHeaders (request, response) {
+    var userAgent = request.headers['user-agent'];
+
+    if (userAgent && userAgent.indexOf('MSIE')) {
+        response.setHeader('X-UA-Compatible', 'IE=Edge,chrome=1');
+    }
+}
+
 function postMain (request, response) {
     var report, data = getViewData('home');
-    
+
     try {
         data.source = request.body.source;
         data.options = models.options.get(request.body.options);
@@ -55,7 +65,8 @@ function postMain (request, response) {
         console.log(error.stack);
         data.error = error;
     }
-    
+
+    setHeaders(request, response);
     response.render(partials.main, data);
 }
 
@@ -64,9 +75,11 @@ function postWs (request, response) {
 }
 
 function getComplexity (request, response) {
+    setHeaders(request, response);
     response.render(partials.complexity, getViewData('complexity'));
 }
 
 function getAbout (request, response) {
+    setHeaders(request, response);
     response.render(partials.about, getViewData('about'));
 }
