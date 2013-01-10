@@ -32,6 +32,7 @@ function getMain (request, response) {
 function getViewData (page) {
     return {
         title: models.title.get(page),
+        description: settings[page].description,
         menu: models.menu.get(page)
     };
 }
