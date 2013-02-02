@@ -12,7 +12,7 @@
         "express": "3.0.x",
         "hogan-express": "0.3.x",
         "stylus": "0.31.x",
-        "complexity-report": "0.6.x",
+        "complexity-report": "0.7.x",
         "check-types": "0.3.x"
     },
     "scripts": {
