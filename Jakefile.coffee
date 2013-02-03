@@ -5,8 +5,8 @@
 commands =
   prepare: 'npm install'
   compile: './node_modules/.bin/coffee -c -o ./public/lib ./public/src'
-  bundle: './node_modules/.bin/browserify ./public/lib/bootstrap.js -o ./public/lib/site.js'
-  minify: './node_modules/.bin/uglifyjs --no-copyright --compress --output ./public/lib/site.min.js ./public/lib/site.js'
+  bundle: './node_modules/.bin/browserify ./public/lib/bootstrap.js -o ./public/lib/app.js'
+  minify: './node_modules/.bin/uglifyjs --no-copyright --compress --output ./public/lib/app.min.js ./public/lib/app.js'
 
 desc 'Install dependencies.'
 task 'prepare', ->
