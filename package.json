@@ -14,7 +14,8 @@
         "stylus": "0.32.x",
         "complexity-report": "0.10.x",
         "check-types": "0.6.x",
-        "d3": "3.1.x"
+        "d3": "3.1.x",
+        "pub-sub": "0.1.x"
     },
     "devDependencies": {
       "jake": "0.5.x",
