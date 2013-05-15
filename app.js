@@ -23,7 +23,7 @@ function initialise () {
 
 function initialiseAll () {
     app.set('port', process.env.PORT || 3000);
-    app.set('views', __dirname + '/views');
+    app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'html');
     app.set('layout', 'layout');
     app.set('partials', partials);
@@ -35,7 +35,11 @@ function initialiseAll () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use(require('stylus').middleware(__dirname + '/public'));
+    app.use(require('stylus').middleware({
+        src: path.join(__dirname, 'client'),
+        dest: path.join(__dirname, 'public'),
+        compress: true
+    });
     app.use(express.static(path.join(__dirname, 'public')));
 }
 
