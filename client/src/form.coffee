@@ -20,3 +20,5 @@ serialiseForm = (element) ->
 
   result
 
+module.exports = { initialise }
+
