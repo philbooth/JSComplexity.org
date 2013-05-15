@@ -39,7 +39,7 @@ function initialiseAll () {
         src: path.join(__dirname, 'client'),
         dest: path.join(__dirname, 'public'),
         compress: true
-    });
+    }));
     app.use(express.static(path.join(__dirname, 'public')));
 }
 
