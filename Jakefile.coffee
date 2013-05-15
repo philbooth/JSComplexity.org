@@ -4,60 +4,39 @@
 
 commands =
   prepare: 'npm install'
-  compile: './node_modules/.bin/coffee -c -o ./public/lib ./public/src'
-  bundle: './node_modules/.bin/browserify ./public/lib/bootstrap.js -o ./public/lib/app.js'
-  minify: './node_modules/.bin/uglifyjs --no-copyright --compress --output ./public/lib/app.min.js ./public/lib/app.js'
+  compile: './node_modules/.bin/coffee -c -o ./client/lib ./client/src'
+  bundle: './node_modules/.bin/browserify ./client/lib/bootstrap.js -o ./client/lib/jscomplexity.js'
+  minify: './node_modules/.bin/uglifyjs --compress --mangle --output ./public/lib/jscomplexity.min.js ./client/lib/jscomplexity.js'
 
 desc 'Install dependencies.'
 task 'prepare', ->
-  runTask prepare, 'Preparing the build environment...'
+  runCommand 'prepare', 'Preparing the build environment...'
 , async: true
 
 desc 'Compile the CoffeeScript into JavaScript.'
 task 'compile', ->
-  runTask compile, 'Compiling CoffeeScript...'
+  runCommand 'compile', 'Compiling CoffeeScript...'
 , async: true
 
 desc 'Bundle the compiled JavaScript as an atomic package.'
 task 'bundle', [ 'compile' ], ->
-  runTask bundle, 'Bundling JavaScript...'
+  runCommand 'bundle', 'Bundling JavaScript...'
 , async: true
 
 desc 'Minify the bundled JavaScript.'
 task 'minify', [ 'bundle' ], ->
-  runTask minify, 'Minifying JavaScript...'
+  runCommand 'minify', 'Minifying JavaScript...'
 , async: true
 
-runTask = (operation, message) ->
+runCommand = (command, message) ->
   console.log message
-  operation()
-
-prepare = ->
-  runCommand commands.prepare
-
-compile = ->
-  runCommand commands.compile
-
-bundle = ->
-  runCommand commands.bundle
-
-minify = ->
-  runCommand commands.minify
-
-runCommand = (command) ->
-  exec command, { cwd: __dirname }, (error, stdout, stderr) ->
+  exec commands[command], { cwd: __dirname }, (error, stdout, stderr) ->
     console.log stdout
     handleError error
-    after()
+    complete()
 
 handleError = (error) ->
   if error?
     console.log error.message
     process.exit 1
-
-after = ->
-  process.env.NODE_PATH = originalNodePath
-  complete()
-
-originalNodePath = process.env.NODE_PATH
 
