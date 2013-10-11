@@ -1,27 +1,25 @@
 .menu
   margin 0
-  padding 0 0 0 40px
+  margin-left -10px
   list-style none
   clearfix()
+  float:right
   li
     float left
     margin 0
     color white
   .menuitem
-    hover-padding = 2px
     display block
     padding 12px
-    margin 0 10px (hover-padding * 2) 0
-    border-radius(0 0 8px 8px)
-    font-size 1.3em
-    background-color blue
-    vertical-gradient(blue, blue-bright)
+    margin-left 10px
+    font-size 1.1em
+    font-weight bold
     color context-light
-    text-shadow context-dark -1px -1px
-    box-shadow(1px 1px context-dark)
-    &.current
-      background-color green
-      vertical-gradient(green, green-bright)
-    &.active:hover
-      margin 0 10px 0 0
-      padding (@padding + hover-padding) @padding
+    text-transform uppercase
+    &.current, &:hover
+      color blue-highlight
+
+.nav
+  background-color darkest-bg
+  clearfix()
+  padding-top:10px;

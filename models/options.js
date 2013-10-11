@@ -8,22 +8,22 @@ function getOptionsModel (options) {
     return [
         {
             name: 'logicalor',
-            description: 'Treat <code>||</code> operator as a source of cyclomatic complexity',
+            description: '<code>||</code> operator',
             set: isOptionSet(options, 'logicalor')
         },
         {
             name: 'switchcase',
-            description: 'Treat <code>switch</code> statements as a source of cyclomatic complexity',
+            description: '<code>switch</code> statements',
             set: isOptionSet(options, 'switchcase')
         },
         {
             name: 'forin',
-            description: 'Treat <code>for...in</code> loops as a source of cyclomatic complexity',
+            description: '<code>for...in</code> loops',
             set: isOptionSet(options, 'forin')
         },
         {
             name: 'trycatch',
-            description: 'Treat <code>catch</code> clauses as a source of cyclomatic complexity',
+            description: '<code>catch</code> clauses',
             set: isOptionSet(options, 'trycatch')
         }
     ];
