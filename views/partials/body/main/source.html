@@ -9,22 +9,21 @@
     >{{source}}</textarea>
 
     <fieldset name="options" class="options">
-        <legend>Options</legend>
+        <legend>Check the following for cyclomatic complexity</legend>
         {{#options}}
-        <input
-         id="options-{{name}}"
-         name="options"
-         value="{{name}}"
-         type="checkbox"
-         {{#set}}
-         checked="checked"
-         {{/set}}
-         class="option"
-        />
-        <label for="options-{{name}}" class="label">
+          <label for="options-{{name}}" class="label">
+            <input
+                 id="options-{{name}}"
+                 name="options"
+                 value="{{name}}"
+                 type="checkbox"
+                 {{#set}}
+                 checked="checked"
+                 {{/set}}
+                 class="option"
+                 />
             {{{description}}}
         </label>
-        <br />
         {{/options}}
     </fieldset>
 
