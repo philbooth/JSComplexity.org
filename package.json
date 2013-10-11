@@ -1,8 +1,12 @@
 {
     "name": "jscomplexity.org",
-    "version": "0.1.28",
+    "version": "0.1.29",
     "private": true,
     "author": "Phil Booth <pmbooth@gmail.com>",
+    "contributors": [
+        { "name": "Phil Booth", "email": "pmbooth@gmail.com" }
+        { "name": "Perry Harlock" }
+    ],
     "subdomain": "jscomplexity",
     "domains": [
         "jscomplexity.org",
