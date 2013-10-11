@@ -4,7 +4,7 @@
     "private": true,
     "author": "Phil Booth <pmbooth@gmail.com>",
     "contributors": [
-        { "name": "Phil Booth", "email": "pmbooth@gmail.com" }
+        { "name": "Phil Booth", "email": "pmbooth@gmail.com" },
         { "name": "Perry Harlock" }
     ],
     "subdomain": "jscomplexity",
