@@ -1,5 +1,6 @@
 {
     "name": "jscomplexity.org",
+    "mod-project-name": "JSComplexity",
     "version": "0.1.29",
     "private": true,
     "author": "Phil Booth <pmbooth@gmail.com>",
