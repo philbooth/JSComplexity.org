@@ -1,6 +1,6 @@
 'use strict';
 
-var cr = require('complexity-report'),
+var escomplex = require('escomplex-js'),
     settings = require('./settings'),
     partials = require('./views/partials'),
     models = {
@@ -52,7 +52,7 @@ function postMain (request, response) {
         data.source = request.body.source;
         data.options = models.options.get(request.body.options);
 
-        report = cr.run(request.body.source, {
+        report = escomplex.analyse(request.body.source, {
             forin: request.body.forin || false,
             trycatch: request.body.trycatch || false,
             logicalor: !request.body.logicalor,

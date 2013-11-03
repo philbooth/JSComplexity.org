@@ -5,20 +5,24 @@ exports.get = getMetricsModel;
 function getMetricsModel (data) {
     return [
         {
+            label: 'Logical LOC',
+            value: data.aggregate.sloc.logical
+        },
+        {
+            label: 'Mean parameter count',
+            value: data.aggregate.params
+        },
+        {
+            label: 'Cyclomatic complexity',
+            value: data.aggregate.cyclomatic
+        },
+        {
+            label: 'Cyclomatic complexity density',
+            value: data.aggregate.cyclomaticDensity
+        },
+        {
             label: 'Maintainability index',
             value: data.maintainability
-        },
-        {
-            label: 'Physical LOC',
-            value: data.aggregate.complexity.sloc.physical
-        },
-        {
-            label: 'Logical LOC',
-            value: data.aggregate.complexity.sloc.logical
-        },
-        {
-            label: 'Aggregate cyclomatic complexity',
-            value: data.aggregate.complexity.cyclomatic
         }
     ];
 }

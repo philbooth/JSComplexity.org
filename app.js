@@ -4,7 +4,6 @@ var express = require('express'),
     hogan = require('hogan-express'),
     http = require('http'),
     path = require('path'),
-    cr = require('complexity-report'),
     routes = require('./routes'),
     partials = require('./views/partials'),
     app = express();
