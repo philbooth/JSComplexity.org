@@ -28,19 +28,19 @@ function getFunctionModel (data) {
             },
             {
                 label: 'Cyclomatic complexity density',
-                value: data.cyclomaticDensity
+                value: Math.round(data.cyclomaticDensity) + '%'
             },
             {
                 label: 'Halstead difficulty',
-                value: data.halstead.difficulty
+                value: Math.round(data.halstead.difficulty)
             },
             {
                 label: 'Halstead volume',
-                value: data.halstead.volume
+                value: Math.round(data.halstead.volume)
             },
             {
                 label: 'Halstead effort',
-                value: data.halstead.effort
+                value: Math.round(data.halstead.effort)
             }
         ]
     };

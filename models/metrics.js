@@ -10,7 +10,7 @@ function getMetricsModel (data) {
         },
         {
             label: 'Mean parameter count',
-            value: data.aggregate.params
+            value: Math.round(data.aggregate.params)
         },
         {
             label: 'Cyclomatic complexity',
@@ -18,11 +18,11 @@ function getMetricsModel (data) {
         },
         {
             label: 'Cyclomatic complexity density',
-            value: data.aggregate.cyclomaticDensity
+            value: Math.round(data.aggregate.cyclomaticDensity) + '%'
         },
         {
             label: 'Maintainability index',
-            value: data.maintainability
+            value: Math.round(data.maintainability)
         }
     ];
 }
