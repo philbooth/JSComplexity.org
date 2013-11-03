@@ -18,7 +18,6 @@
         "hogan-express": "0.5.x",
         "stylus": "0.39.x",
         "escomplex-js": "0.1.x",
-        "check-types": "1.1.x",
         "d3": "3.3.x",
         "pub-sub": "0.1.x"
     },

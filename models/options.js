@@ -1,7 +1,5 @@
 'use strict';
 
-var check = require('check-types');
-
 exports.get = getOptionsModel;
 
 function getOptionsModel (options) {
@@ -34,7 +32,7 @@ function isOptionSet(options, option) {
         return true;
     }
 
-    if (check.isArray(options) && options.indexOf(option) !== -1) {
+    if (Array.isArray(options) && options.indexOf(option) !== -1) {
         return true;
     }
 
