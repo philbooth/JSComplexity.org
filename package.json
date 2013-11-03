@@ -14,24 +14,24 @@
         "www.jscomplexity.org"
     ],
     "dependencies": {
-        "express": "3.2.x",
-        "hogan-express": "0.3.x",
-        "stylus": "0.32.x",
-        "complexity-report": "0.10.x",
-        "check-types": "0.6.x",
-        "d3": "3.1.x",
+        "express": "3.4.x",
+        "hogan-express": "0.5.x",
+        "stylus": "0.39.x",
+        "escomplex-js": "0.1.x",
+        "check-types": "1.1.x",
+        "d3": "3.3.x",
         "pub-sub": "0.1.x"
     },
     "devDependencies": {
-      "jake": "0.5.x",
+      "jake": "0.7.x",
       "coffee-script": "1.6.x",
-      "browserify": "2.13.x",
-      "uglify-js": "2.3.x"
+      "browserify": "2.35.x",
+      "uglify-js": "2.4.x"
     },
     "scripts": {
         "start": "node ./app.js"
     },
     "engines": {
-        "node": ">=0.8"
+        "node": "0.10.x"
     }
 }
