@@ -3,29 +3,13 @@
     "mod-project-name": "JSComplexity",
     "version": "0.1.32",
     "private": true,
-    "author": "Phil Booth <pmbooth@gmail.com>",
-    "contributors": [
-        { "name": "Phil Booth", "email": "pmbooth@gmail.com" },
-        { "name": "Perry Harlock" }
-    ],
-    "subdomain": "jscomplexity",
-    "domains": [
-        "jscomplexity.org",
-        "www.jscomplexity.org"
-    ],
+    "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
     "dependencies": {
         "express": "3.4.x",
         "hogan-express": "0.5.x",
         "stylus": "0.39.x",
         "escomplex-js": "0.1.x",
-        "d3": "3.3.x",
         "pub-sub": "0.1.x"
-    },
-    "devDependencies": {
-      "jake": "0.7.x",
-      "coffee-script": "1.6.x",
-      "browserify": "2.35.x",
-      "uglify-js": "2.4.x"
     },
     "scripts": {
         "start": "node ./app.js"
