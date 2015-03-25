@@ -6,7 +6,13 @@ exports.get = getMenuModel;
 
 function getMenuModel (page) {
     return function (menuitem) {
-        var trimmed = menuitem.trim();
+        var trimmed;
+
+        if (!menuitem) {
+            return;
+        }
+
+        trimmed = menuitem.trim();
 
         if (trimmed === page) {
             return getCurrentMenuItem(trimmed);
