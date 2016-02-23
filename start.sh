@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo env PORT=80 npm start
+env PORT=80 ./node_modules/.bin/forever ./app.js

@@ -1,20 +1,21 @@
 {
-    "name": "jscomplexity.org",
-    "mod-project-name": "JSComplexity",
-    "version": "0.1.32",
-    "private": true,
-    "author": "Jared Stilwell <jared.k.stilwell@gmail.com> (https://github.com/jared-stilwell)",
-    "dependencies": {
-        "express": "3.4.x",
-        "hogan-express": "0.5.x",
-        "stylus": "0.39.x",
-        "escomplex-js": "0.1.x",
-        "pub-sub": "0.1.x"
-    },
-    "scripts": {
-        "start": "node ./app.js"
-    },
-    "engines": {
-        "node": "0.12.x"
-    }
+  "name": "jscomplexity.org",
+  "mod-project-name": "JSComplexity",
+  "version": "0.1.32",
+  "private": true,
+  "author": "Jared Stilwell <jared.k.stilwell@gmail.com> (https://github.com/jared-stilwell)",
+  "dependencies": {
+    "escomplex-js": "0.1.x",
+    "express": "3.4.x",
+    "forever": "^0.15.1",
+    "hogan-express": "0.5.x",
+    "pub-sub": "0.1.x",
+    "stylus": "0.39.x"
+  },
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "engines": {
+    "node": "0.12.x"
+  }
 }
