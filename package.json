@@ -3,7 +3,7 @@
     "mod-project-name": "JSComplexity",
     "version": "0.1.32",
     "private": true,
-    "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
+    "author": "Jared Stilwell <jared.k.stilwell@gmail.com> (https://github.com/jared-stilwell)",
     "dependencies": {
         "express": "3.4.x",
         "hogan-express": "0.5.x",
